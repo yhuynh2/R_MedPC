@@ -47,8 +47,8 @@
 #_____________________________________________________________________________
 
 ## Change the pathcode to the file path that contains ONLY your data files
-## If this file path includes subfolders, you must make sure it only contains
-## data files. No other files (excel, text files, etc.)
+## If this file path includes anything other than raw MPC data files, you must 
+## remove those files. No other files (excel, text files, etc.) should be in this file path!
 pathcode <- "/Users/wendy/Box Sync/Bevins Lab/MedPC2XL Converter/Practice Data"
 
 
