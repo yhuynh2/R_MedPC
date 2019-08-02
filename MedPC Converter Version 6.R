@@ -6,27 +6,27 @@
 
 # Description -------------------------------------------------------------
 
-## This is the complete functional MedPC2XL equivalent 
-## The only lines of code you change are the file paths for importing and setting the wd
+## This is the complete functional MedPC2XL equivalent.
+## The only lines of code you change are the file paths for setting the working directory (wd).
 ## Once you set the working directory to the folder that contains the data files (or data sub-folders),
 ## You can run the code and it will take out all the files, including files from a sub-folder
 ## WITHOUT needing to change the working directory for each sub-folder 
 ## (i.e. a path like: /Users/wendy/Box Sync/Bevins Lab/MedPC2XL Converter/Practice Data
 ## will obtain ALL files inside the "Practice Data" folder (incl. subfolders).
-## Make sure that all files in "Practice Data" are data files ONLY.
+## Make sure that the file path used for this consists of ONLY data files (no subfolders, .docx, .xlsx, etc).
 ## Last bit of code (creating "final" object) take a while longer to run (~5 sec)
-## If not all datafiles contain every variable, NAs will be produced 
-## (i.e., if not every subj has variable Z606 (activity bin measure), will produce NA)
+## NAs will be produced where the file lacks a value other files include.
+## For example, if not all subj have variable Z606 (e.g., activity bin measure), will produce NA
 ## Make sure to change the wd AFTER you import all files using this code!! 
 
 
 # Requirements ------------------------------------------------------------
-# You must have two packages installed in order to use this: 
+# You must have two packages installed in order to use this converter: 
 ## tidyverse 
 ## splitstackshape
 
 # Updates -----------------------------------------------------------------
-#    - generalizable; DOESN'T need A to be the first subsetted variable
+#    - generalizable; DOESN'T need 'A' to be the first subsetted variable
 #    - doesn't remove variables that are unused (all variables A-Z are present even if not used in program)
 #    - Better accounts for last subsetted variable's values (last one cut off values after 5th subsetted ex. V(1)-V(5) but not V(6)+)
 #    - Removed warning message for letter variables unused
@@ -66,7 +66,6 @@ library(splitstackshape)
 setwd(str_c(pathcode, "/"))
 list_of_files <- list.files(path = ".", recursive = T, full.names = TRUE)
 list_of_files # checks the names of your files
-#list_of_files <- list_of_files[-1] # removes the first file (data I don't want)
 
 
 
@@ -75,17 +74,18 @@ list_of_files # checks the names of your files
 #                        Do not touch this chunk of code 
 #_____________________________________________________________________________
 # Useful Functions For Data Organization ----------------------------------
+
 # Standard Error of the Mean
 sem <- function(x, na.rm = FALSE) {
   out <-sd(x, na.rm = na.rm)/sqrt(length(x))
   return(out)
 }
+
 # Convert factors back to their numeric values; 
 # this was used bc "final" tbl automatically assumed factor
-
 as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
-# create a for-loop function that runs through the names of all the variables
-# and tells me which column has the NA values
+
+# Tells the user where any NA values are located (if any)
 find.na <- function(x, na.rm = FALSE) {
   temp <- vector() 
   for (i in names(x)) {    
@@ -230,10 +230,4 @@ find.na <- function(x, na.rm = FALSE) {
   names(final)
 }
 
-## CHANGE YOUR WD AFTER THIS TO YOUR R FOLDER
-# This is because you don't want to work with your data in the same
-# folder where your data is located. You should have a separate folder elsewhere
-# (NOT A SUBFOLDER WITHIN YOUR DATA FILE FOLDER) that works with R stuff.
-# E.X. If my data file folder is "Practice Data", my wd for R stuff should be something like
-# /Users/wendy/Box Sync/Bevins Lab/MedPC2XL Converter/R Folder
-# It just cannot be within Practice Data!! 
+## CHANGE YOUR WD AFTER EXECUTING THIS CODE!
