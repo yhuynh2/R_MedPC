@@ -13,7 +13,7 @@
 ## WITHOUT needing to change the working directory for each sub-folder 
 ## (i.e. a path like: /Users/wendy/Box Sync/Bevins Lab/MedPC2XL Converter/Practice Data
 ## will obtain ALL files inside the "Practice Data" folder (incl. subfolders).
-## Make sure that the file path used for this consists of ONLY data files (no subfolders, .docx, .xlsx, etc).
+## Make sure that the file path used for this consists of ONLY MPC data files (no .docx, .xlsx, files etc).
 ## Last bit of code (creating "final" object) take a while longer to run (~5 sec)
 ## NAs will be produced where the file lacks a value other files include.
 ## For example, if not all subj have variable Z606 (e.g., activity bin measure), will produce NA
