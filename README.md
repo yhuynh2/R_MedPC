@@ -5,8 +5,11 @@ This is a step-by-step guide for using the MEDPC Converter created by Wendy Huyn
 1. Download R (https://www.r-project.org/) and RStudio (https://www.rstudio.com/products/rstudio/download/) to your computer (they're free programs)
 
 2. Open RStudio and execute the following commands in the _console_. To execute commands in R, type them _one at a time_ in the console and press the ENTER key. Each command will take some time to execute (<3 minutes). 
+
 `install.packages("tidyverse")`
+
 `install.packages("splitstackshape")`
+
 `install.packages("writexl")`
 
 3. Open the MedPC Converter.R file. This file will automatically open in RStudio.
@@ -33,7 +36,9 @@ This is a step-by-step guide for using the MEDPC Converter created by Wendy Huyn
 11. If the short list of names printed in the console looks correct, THEN highlight lines 56 to 231 and execute the code (using CTRL + ENTER). This section of code will take longer to execute, depending on the number of files you are converting.
 
 12. If you are familiar with R, make sure to change the working directory before saving the object named final as an .xlsx files. If you are unfamiliar with R, execute the following code to save your converted data:
+
 `library(writexl)`
+
 `write_xlsx(final, str_c("Converted Data ", str_replace_all(Sys.time(), ":", "-")))`
 
 The code above will save your converted files as an .xlsx (Excel) file in your DATA FOLDER. The title of the Excel file will be contain the current date (year-month-day) and time (hour-min-sec). Next, **move this .xlsx file OUT of DATA FOLDER** for the MedPC2XL converter to work next time. This is because this converter will not ignore non-MedPC files and try to convert them, resulting in an error.
