@@ -1,3 +1,5 @@
+## Update (2020-09-28): Please note that this code will run most efficiently on MedPC Version IV. The files created under MedPC Version V will be too large for this converter to run efficiently. 
+
 # R_MedPC Converter
 
 This is a step-by-step guide for using the MEDPC Converter created by Wendy Huynh. Please download the files in yhuynh/R_MedPC (https://github.com/yhuynh2/R_MedPC) by clicking on the "Clone or download" green button. You must download it as a ZIP file; afterwards, you may extract these files out of the ZIP folder and place them wherever you choose. 
